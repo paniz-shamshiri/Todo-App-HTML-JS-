@@ -14,26 +14,50 @@
 <ul id="taskList"></ul>
 
 <script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function renderTasks() {
+  const list = document.getElementById("taskList");
+  list.innerHTML = "";
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement("li");
+    li.innerText = task;
+
+    const btn = document.createElement("button");
+    btn.innerText = "❌";
+    btn.style.marginLeft = "10px";
+
+    btn.onclick = function () {
+      tasks.splice(index, 1);
+      saveTasks();
+      renderTasks();
+    };
+
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+}
+
 function addTask() {
   const input = document.getElementById("taskInput");
   const task = input.value;
 
   if (task === "") return;
 
-  const li = document.createElement("li");
-  li.innerText = task;
-
-  const btn = document.createElement("button");
-  btn.innerText = "❌";
-  btn.onclick = function () {
-    li.remove();
-  };
-
-  li.appendChild(btn);
-  document.getElementById("taskList").appendChild(li);
+  tasks.push(task);
+  saveTasks();
+  renderTasks();
 
   input.value = "";
 }
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// اولین بار لود شدن صفحه
+renderTasks();
 </script>
   li.innerText = task;
 
