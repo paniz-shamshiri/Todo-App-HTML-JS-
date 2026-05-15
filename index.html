@@ -23,6 +23,20 @@ function addTask() {
   const li = document.createElement("li");
   li.innerText = task;
 
+  const btn = document.createElement("button");
+  btn.innerText = "❌";
+  btn.onclick = function () {
+    li.remove();
+  };
+
+  li.appendChild(btn);
+  document.getElementById("taskList").appendChild(li);
+
+  input.value = "";
+}
+</script>
+  li.innerText = task;
+
   document.getElementById("taskList").appendChild(li);
 
   input.value = "";
