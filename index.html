@@ -50,11 +50,9 @@ function renderTasks() {
 
     const btn = document.createElement("button");
     btn.innerText = "❌";
-    btn.style.marginLeft = "10px";
-
     btn.onclick = function () {
       tasks.splice(index, 1);
-      saveTasks();
+      localStorage.setItem("tasks", JSON.stringify(tasks));
       renderTasks();
     };
 
@@ -70,17 +68,12 @@ function addTask() {
   if (task === "") return;
 
   tasks.push(task);
-  saveTasks();
+  localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
 
   input.value = "";
 }
 
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
-
-// بار اول اجرا
 renderTasks();
 </script>
 
