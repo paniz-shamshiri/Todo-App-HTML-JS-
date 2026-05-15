@@ -1,8 +1,32 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Todo App</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      width: 70%;
+    }
+
+    button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    li {
+      margin-top: 10px;
+      list-style: none;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -56,15 +80,8 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// اولین بار لود شدن صفحه
+// بار اول اجرا
 renderTasks();
-</script>
-  li.innerText = task;
-
-  document.getElementById("taskList").appendChild(li);
-
-  input.value = "";
-}
 </script>
 
 </body>
